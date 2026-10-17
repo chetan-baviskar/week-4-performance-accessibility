@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An interactive productivity dashboard built with HTML, CSS and JavaScript.">
+  <title>FocusFlow — Interactive Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="FocusFlow home"><span class="brand-mark">F</span> focusflow<span class="dot">.</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#features">Features</a><a href="#planner">Planner</a><a href="#contact">Contact</a>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle color theme">☼ Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="pulse"></span> YOUR SPACE TO FOCUS</span>
+        <h1>Make room for<br><span>great work.</span></h1>
+        <p class="hero-text">A calmer way to organize your day. Capture your next step, celebrate small wins, and keep your momentum moving.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#planner">Build my day <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="#features">Explore features</a>
+        </div>
+        <div class="hero-proof"><div class="avatars"><span>C</span><span>A</span><span>R</span></div><p><strong>One step at a time.</strong><br><small>Progress over perfection.</small></p></div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a focus dashboard">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="floating-card card-top"><span class="mini-icon">✦</span><div><b>Focus mode</b><small>You're doing great</small></div><span class="green-check">✓</span></div>
+        <div class="dashboard-card">
+          <div class="dash-head"><span>Today's focus</span><span class="three-dots">•••</span></div>
+          <div class="progress-ring"><div><strong id="ringPercent">68%</strong><small>complete</small></div></div>
+          <div class="progress-label"><span>Daily progress</span><b id="progressText">3 of 5 tasks</b></div>
+          <div class="progress-track"><span id="progressBar" style="width:60%"></span></div>
+          <div class="dash-task"><span class="task-check checked">✓</span><span>Plan the week</span><small>09:00</small></div>
+          <div class="dash-task"><span class="task-check checked">✓</span><span>Review project</span><small>10:30</small></div>
+          <div class="dash-task"><span class="task-check"></span><span>Learn something new</span><small>12:00</small></div>
+        </div>
+        <div class="floating-card card-bottom"><span class="sparkle">✧</span><div><b>Small wins count</b><small>Keep your streak alive</small></div></div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Dashboard highlights">
+      <div><strong id="statTasks">05</strong><span>Daily task slots</span></div>
+      <div><strong>01</strong><span>Clear next step</span></div>
+      <div><strong>∞</strong><span>Room to grow</span></div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="section-heading"><span class="eyebrow">LESS CLUTTER, MORE CLARITY</span><h2>Designed for your <span>momentum.</span></h2><p>Simple tools that turn good intentions into practical action.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card"><div class="feature-icon violet">✦</div><h3>Find your focus</h3><p>Choose one priority and give it your attention without overcomplicating the plan.</p><a href="#planner">Set a priority <span>→</span></a></article>
+        <article class="feature-card"><div class="feature-icon orange">✓</div><h3>Track your wins</h3><p>Mark tasks complete and watch your progress update instantly as you work.</p><a href="#planner">Track progress <span>→</span></a></article>
+        <article class="feature-card"><div class="feature-icon mint">↗</div><h3>Build a rhythm</h3><p>Use small, repeatable steps to make productive days feel more achievable.</p><a href="#contact">Get in touch <span>→</span></a></article>
+      </div>
+    </section>
+
+    <section class="planner-section" id="planner">
+      <div class="planner-intro"><span class="eyebrow">YOUR DAILY PLAN</span><h2>Make today<br><span>count.</span></h2><p>Add a task, check it off when you're done, and let the progress bar do the celebrating.</p>
+        <div class="quote-card"><span>“</span><p>You don't have to see the whole staircase. Just take the first step.</p><small>— A reminder to begin</small></div>
+      </div>
+      <div class="planner-card">
+        <div class="planner-title"><div><span class="eyebrow">TASK MANAGER</span><h3>My checklist</h3></div><span class="date-pill" id="todayDate">Today</span></div>
+        <form id="taskForm" class="task-form">
+          <label class="sr-only" for="taskInput">New task</label>
+          <input id="taskInput" type="text" maxlength="80" placeholder="What would you like to do?" required>
+          <button type="submit" aria-label="Add task">+</button>
+        </form>
+        <p id="formMessage" class="form-message" aria-live="polite"></p>
+        <ul id="taskList" class="task-list">
+          <li class="task-item done"><button class="task-toggle" aria-label="Mark Plan the week incomplete">✓</button><span>Plan the week</span><button class="delete-task" aria-label="Delete Plan the week">×</button></li>
+          <li class="task-item done"><button class="task-toggle" aria-label="Mark Review project incomplete">✓</button><span>Review project</span><button class="delete-task" aria-label="Delete Review project">×</button></li>
+          <li class="task-item"><button class="task-toggle" aria-label="Mark Practice JavaScript complete"></button><span>Practice JavaScript</span><button class="delete-task" aria-label="Delete Practice JavaScript">×</button></li>
+          <li class="task-item"><button class="task-toggle" aria-label="Mark Take a short break complete"></button><span>Take a short break</span><button class="delete-task" aria-label="Delete Take a short break">×</button></li>
+          <li class="task-item"><button class="task-toggle" aria-label="Mark Prepare tomorrow complete"></button><span>Prepare tomorrow</span><button class="delete-task" aria-label="Delete Prepare tomorrow">×</button></li>
+        </ul>
+        <div class="planner-footer"><span id="taskCount">2 of 5 completed</span><button id="clearDone" type="button">Clear completed</button></div>
+        <div class="planner-progress"><span id="plannerProgress"></span></div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div><span class="eyebrow">LET'S CONNECT</span><h2>Good things start<br>with a <span>hello.</span></h2><p>Send a quick note. The form checks your details before showing a confirmation.</p></div>
+      <form id="contactForm" class="contact-form" novalidate>
+        <label for="name">Your name</label><input id="name" name="name" type="text" placeholder="e.g. Chetan" required>
+        <label for="email">Email address</label><input id="email" name="email" type="email" placeholder="you@example.com" required>
+        <label for="message">Message</label><textarea id="message" name="message" rows="3" placeholder="What's on your mind?" required></textarea>
+        <button class="button primary" type="submit">Send message <span>↗</span></button>
+        <p id="contactFeedback" class="form-message" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">F</span> focusflow<span class="dot">.</span></a><p>Built with care using HTML, CSS & JavaScript.</p><a href="#top" id="backTop">Back to top ↑</a></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
